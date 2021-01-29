@@ -1,39 +1,31 @@
 import { calculate } from "./index";
 
 describe("calculate simple cases", () => {
-  it("1 * 32", () => {
-    expect(calculate("1 * 32")).toEqual(32);
-  });
-
-  it("2 * 32", () => {
-    expect(calculate("2 * 32")).toEqual(64);
-  });
-
-  it("2 + 32", () => {
-    expect(calculate("2 + 32")).toEqual(34);
+  test.each([
+    ["1 * 32", 32],
+    ["2 * 32", 64],
+    ["2 + 32", 34],
+  ])("calculate(%p) = %p", (a, b) => {
+    expect(calculate(a)).toEqual(b);
   });
 });
 
 describe("calculate tripled/mixed cases", () => {
-  it("2 * 2 * 3", () => {
-    expect(calculate("2 * 2 * 3")).toEqual(12);
-  });
-
-  it("2 * 2 + 3", () => {
-    expect(calculate("2 * 2 + 3")).toEqual(7);
-  });
-
-  it("2 + 2 * 3", () => {
-    expect(calculate("2 + 2 * 3")).toEqual(8);
+  test.each([
+    ["2 * 2 * 3", 12],
+    ["2 * 2 + 3", 7],
+    ["2 + 2 * 3", 8],
+  ])("calculate(%p) = %p", (a, b) => {
+    expect(calculate(a)).toEqual(b);
   });
 });
 
 describe("calculate long cases", () => {
-  it("20 + 1 * 10 - 5 * 3", () => {
-    expect(calculate("20 + 1 * 10 - 5 * 3")).toEqual(15);
-  });
-
-  it("20 - 10 * 10 / 5 - 3", () => {
-    expect(calculate("20 - 10 * 10 / 5 - 3")).toEqual(-3);
+  test.each([
+    ["20 + 1 * 10 - 5 * 3", 15],
+    ["20 - 10 * 10 / 5 - 3", -3],
+    ["2 + 2 * 3", 8],
+  ])("calculate(%p) = %p", (a, b) => {
+    expect(calculate(a)).toEqual(b);
   });
 });
