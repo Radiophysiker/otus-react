@@ -1,27 +1,31 @@
 import { mul, div, add, minus } from "./mathOperators";
 
 describe("mathOperators test cases", () => {
-  it("mul 1 * 2 to equal 2", () => {
-    expect(mul(1, 2)).toBe(2);
+  test.each([
+    [1, 2, 2],
+    [2, 2, 4],
+  ])("mul(%p, %p) = %p", (a, b, result) => {
+    expect(mul(a, b)).toBe(result);
   });
 
-  it("mul 2 * 2 to equal 4", () => {
-    expect(mul(2, 2)).toBe(4);
+  test.each([
+    [2, 2, 1],
+    [6, 2, 3],
+  ])("div %p / %p = %p", (a, b, result) => {
+    expect(div(a, b)).toBe(result);
   });
 
-  it("div 2 / 2 to equal 1", () => {
-    expect(div(2, 2)).toBe(1);
+  test.each([
+    [2, 3, 5],
+    [6, 2, 8],
+  ])("%p + %p = %p", (a, b, result) => {
+    expect(add(a, b)).toBe(result);
   });
 
-  it("div 4 / 2 to equal 2", () => {
-    expect(div(4, 2)).toBe(2);
-  });
-
-  it("add 4 + 2 to equal 6", () => {
-    expect(add(4, 2)).toBe(6);
-  });
-
-  it("minus 4 - 2 to equal 2", () => {
-    expect(minus(4, 2)).toBe(2);
+  test.each([
+    [2, 3, -1],
+    [6, 2, 4],
+  ])("%p - %p = %p", (a, b, result) => {
+    expect(minus(a, b)).toBe(result);
   });
 });
