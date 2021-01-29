@@ -15,13 +15,11 @@ export const mathOperators: { [key: string]: ScalarOperationType } = {
   "-": minus,
 };
 
-export const mathPriorities: number[] = [1, 2];
+export type mathPriorities = 1 | 2;
 
-const [FIRST, SECOND] = mathPriorities;
-
-export const mathOperatorsPriorities: { [key: string]: number } = {
-  "*": FIRST,
-  "/": FIRST,
-  "+": SECOND,
-  "-": SECOND,
+export const mathOperatorsPriorities: { [key: string]: mathPriorities } = {
+  "*": 1,
+  "/": 1,
+  "+": 2,
+  "-": 2,
 };
