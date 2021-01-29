@@ -1,21 +1,16 @@
 import { parser } from "./parser";
 
 describe("Simple test", () => {
-  it("simple add: 1 + 1", () => {
-    expect(parser("1 + 1")).toEqual([1, "+", 1]);
-  });
-
-  it("add and multiple: 2 + 2 * 2", () => {
-    expect(parser("2 + 2 * 2")).toEqual([2, "+", 2, "*", 2]);
+  test.each([
+    ["1 + 1", [1, "+", 1]],
+    ["2 + 2 * 2", [2, "+", 2, "*", 2]],
+  ])("parser(%p) = %p", (a, result) => {
+    expect(parser(a)).toEqual(result);
   });
 });
 
 describe("Parser invalid cases", () => {
-  it("1 + + 33 - 2", () => {
-    expect(() => parser("1 + + 33 - 2")).toThrow(TypeError("Unexpected string"));
-  });
-
-  it("1 | 33 - 2", () => {
-    expect(() => parser("1 | 33 - 2")).toThrow(TypeError("Unexpected string"));
+  test.each([["1 + + 33 - 2"], ["1 | 33 - 2"], ["1 - 33 - - 2 "]])("%p + %p = %p", (a) => {
+    expect(() => parser(a)).toThrow(TypeError("Unexpected string"));
   });
 });
