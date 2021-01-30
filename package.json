@@ -7,7 +7,8 @@
   "author": "Radiophysiker <bolshakovdmitry@bk.ru>",
   "scripts": {
     "dev": "npx webpack serve --mode development",
-    "lint": "npx eslint --ext .js,.jsx,.ts,.tsx ./",
+    "lint:check": "npx eslint --ext .js,.jsx,.ts,.tsx --fix",
+    "lint": "npm run lint:check ./",
     "calc": "npx ts-node src/lesson2",
     "prettier": "prettier -c src/**/*",
     "test": "npx jest",

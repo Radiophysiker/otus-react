@@ -4,6 +4,7 @@ describe("Simple test", () => {
   test.each([
     ["1 + 1", [1, "+", 1]],
     ["2 + 2 * 2", [2, "+", 2, "*", 2]],
+    ["2 + 2 * 2 + 3", [2, "+", 2, "*", 2, "+", 3]],
   ])("parser(%p) = %p", (a, result) => {
     expect(parser(a)).toEqual(result);
   });
